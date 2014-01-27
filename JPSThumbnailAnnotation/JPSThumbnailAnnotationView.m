@@ -197,12 +197,12 @@
     if (_state != JPSThumbnailAnnotationViewStateExpanded) return;
     _state = JPSThumbnailAnnotationViewStateAnimating;
 
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width-JPSThumbnailAnnotationViewExpandOffset, self.frame.size.height);
     [UIView animateWithDuration:JPSThumbnailAnnotationViewAnimationDuration/2 delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         _disclosureButton.alpha = 0;
         _titleLabel.alpha = 0;
         _subtitleLabel.alpha = 0;
     } completion:^(BOOL finished) {
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width-JPSThumbnailAnnotationViewExpandOffset, self.frame.size.height);
         [self animateBubbleWithDirection:JPSThumbnailAnnotationViewAnimationDirectionShrink];
         self.centerOffset = CGPointMake(0, -JPSThumbnailAnnotationViewVerticalOffset);
     }];
